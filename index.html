@@ -162,7 +162,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid #dfd4b9;
+            border-bottom: 1px solid #9aa0a6;
             padding-bottom: 8px;
         }
 
@@ -230,7 +230,7 @@
             overflow: hidden;
             width: 0%;
             white-space: nowrap;
-            animation: starSweepLoop 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation: starSweepLoop 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
         .star-fill-overlay span {
@@ -250,7 +250,7 @@
         .review-quote-mark {
             font-size: 3.5rem;
             line-height: 0.6;
-            color: #dfd4b9;
+            color: #9aa0a6;
             font-family: Georgia, serif;
             margin-bottom: -8px;
             user-select: none;
@@ -660,7 +660,7 @@
 
     <!-- Header -->
     <div class="sketch-header">
-        <a href="https://diyseosupport.github.io/" aria-label="DIYSEO home"><img class="diyseo-exact-logo" src="this-logo.gif?v=2" alt="DIYSEO Logo"></a>
+        <a href="https://diyseosupport.github.io/" aria-label="DIYSEO home"><img class="diyseo-exact-logo" src="this-logo.webp?v=3" alt="DIYSEO Logo"></a>
         <div class="slanted-badge-container">
             <span class="badge-line line-1">No Budget.</span>
             <span class="badge-line line-2">No Tech Skills.</span>
@@ -830,7 +830,7 @@
 
     <!-- Footer Disclaimer -->
     <div class="sketch-footer">
-        <a href="https://diyseosupport.github.io/" aria-label="DIYSEO home"><img class="footer-logo" src="this-logo.gif?v=2" alt="DIYSEO" width="48" height="48"></a>
+        <a href="https://diyseosupport.github.io/" aria-label="DIYSEO home"><img class="footer-logo" src="this-logo.webp?v=3" alt="DIYSEO" width="48" height="48"></a>
         <p class="disclaimer-text">
             Results vary by market and effort — no specific ranking or traffic outcome is guaranteed. Not affiliated with, endorsed by, or sponsored by Google.
         </p>
@@ -839,6 +839,19 @@
 </div>
 
 <script>
+// Ticker: move in whole pixels so the text stays sharp (CSS animation lands on half pixels and blurs it)
+(function () {
+    var t = document.querySelector('.ticker-track');
+    if (!t || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    t.style.animation = 'none';
+    var start = performance.now();
+    (function step(now) {
+        var w = t.scrollWidth / 2;
+        t.style.transform = 'translateX(' + Math.round(-w + ((now - start) / 22000 * w) % w) + 'px)';
+        requestAnimationFrame(step);
+    })(start);
+})();
+
 (function() {
     var s1 = document.getElementById('tw-s1');
     var s2 = document.getElementById('tw-s2');
