@@ -621,6 +621,7 @@
         }
         .ticker-track {
             display: inline-flex;
+            will-change: transform;
             animation: tickerScroll 22s linear infinite;
         }
         .ticker-item {
@@ -852,8 +853,9 @@
     t.style.animation = 'none';
     var start = performance.now();
     (function step(now) {
-        var w = t.scrollWidth / 2;
-        t.style.transform = 'translateX(' + Math.round(-w + ((now - start) / 22000 * w) % w) + 'px)';
+        // snap to whole screen (device) pixels, not CSS pixels: on zoomed or high-DPI screens a CSS pixel is a fraction of a device pixel
+        var w = t.scrollWidth / 2, d = window.devicePixelRatio || 1;
+        t.style.transform = 'translate3d(' + Math.round((-w + ((now - start) / 22000 * w) % w) * d) / d + 'px,0,0)';
         requestAnimationFrame(step);
     })(start);
 })();
