@@ -503,6 +503,20 @@
             100% { background-color: var(--g-red); }
         }
 
+        .brand-slogan {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            font-size: clamp(1.6rem, 4.2vw, 2.7rem);
+            font-weight: 800;
+            letter-spacing: -.035em;
+            line-height: 1.1;
+            color: #1c2d3d; /* "No problem." dark navy, as in slogan.png */
+            text-align: center;
+            margin: 0 0 22px;
+        }
+        .brand-slogan span { white-space: nowrap; }
+        .brand-slogan .o { color: #dc763a; }
+        .brand-slogan .b { color: #446386; }
+
         /* Wide screens: two columns so the page isn't one long strip */
         @media (min-width: 960px) {
             .sketch-container {
@@ -512,7 +526,7 @@
                 column-gap: 40px;
                 align-items: start;
             }
-            .sketch-footer { grid-column: 1 / -1; }
+            .sketch-footer, .brand-slogan { grid-column: 1 / -1; }
         }
 
         .sketch-footer {
@@ -665,7 +679,7 @@
             .ticker-track { animation: none; }
         }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -679,15 +693,13 @@
 
 <div class="sketch-container">
 
+  <!-- Slogan, same as the homepage hero and intake form -->
+  <div class="brand-slogan"><span class="o">No budget.</span> <span class="b">No tech skills.</span> <span>No problem.</span></div>
+
   <div class="col-left">
     <!-- Header -->
     <div class="sketch-header">
         <a href="https://diyseosupport.github.io/" aria-label="DIYSEO home"><img class="diyseo-exact-logo" src="this-logo.webp?v=3" alt="DIYSEO Logo"></a>
-        <div class="slanted-badge-container">
-            <span class="badge-line line-1">No budget.</span>
-            <span class="badge-line line-2">No tech skills.</span>
-            <span class="badge-line line-3">No problem.</span>
-        </div>
         <h1 data-gumroad-field="name">A Small Business Owner's Guide to Getting Found on <span class="gword"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span> Maps®</h1>
     </div>
 
